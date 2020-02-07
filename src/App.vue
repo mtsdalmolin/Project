@@ -23,7 +23,6 @@ export default {
   },
   async mounted () {
     this.apiResponse = await this.fetchPosts()
-    console.log(this.apiResponse)
   }
 }
 </script>
