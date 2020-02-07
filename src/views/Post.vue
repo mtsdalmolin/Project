@@ -8,7 +8,7 @@
         </router-link>
       </template>
       <span v-else class="post-author">{{ currentPost.author.name }}</span>
-      <span class="post-date">{{ Date(currentPost.date) }}</span>
+      <span class="post-date">{{ processDate(currentPost.date) }}</span>
     </div>
     <div class="post-content">
       <div v-html="currentPost.content">
@@ -20,7 +20,12 @@
 <script>
 export default {
   props: {
-    posts: Array
+    posts: {
+      type: Array
+    },
+    processDate: {
+      type: Function
+    }
   },
   computed: {
     currentPost () {
@@ -31,16 +36,21 @@ export default {
 </script>
 
 <style scoped>
+* {
+  margin: 15px;
+  background-color: azure;
+}
 span {
   display: block;
 }
-
 .post-title {
   font-size: 80px;
+  text-align: center;
 }
 .post-info {
   display: flex-end;
   margin: 10px;
   padding: 5px;
+  text-align: right;
 }
 </style>

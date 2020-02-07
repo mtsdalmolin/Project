@@ -1,10 +1,10 @@
 <template>
   <div class="home">
-    <h1>Welcome to Mathico's Final Challenge Vue Project</h1>
-    <div v-if="this.loading">
+    <span class="title">Welcome to Mathico's Final Challenge Vue Project</span>
+    <div class="content" v-if="this.loading">
       Carregando...
     </div>
-    <div v-else>
+    <div class="content" v-else>
       <template v-for="(post, index) in posts.slice(0, numberOfPosts)">
         <div :key="index">
           <span class="post-title">{{ post.title }}</span>
@@ -32,6 +32,9 @@ export default {
   props: {
     posts: {
       type: Array
+    },
+    processDate: {
+      type: Function
     }
   },
   methods: {
@@ -42,10 +45,6 @@ export default {
     },
     loadMorePosts () {
       this.numberOfPosts += 5
-    },
-    processDate (date) {
-      let dateInfo = Date(date).split(' ')
-      return `${dateInfo[1]} ${dateInfo[2]}, ${dateInfo[3]}`
     }
   },
   mounted () {
@@ -65,5 +64,18 @@ export default {
 }
 span.read-more {
   display: inline-flex;
+}
+.title {
+  text-align: center;
+  font-size: 60px;
+  font-weight: bold;
+}
+.content {
+  text-align: center;
+  font-size: 200%;
+}
+.content div {
+  margin: 15px;
+  background-color: azure;
 }
 </style>
